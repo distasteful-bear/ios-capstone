@@ -5,4 +5,4 @@ This is the final project in my iOS course I am taking through Coursera and taug
  jamesmetz1231@gmail.com
  
  Cheers,
- - James
+ -James
