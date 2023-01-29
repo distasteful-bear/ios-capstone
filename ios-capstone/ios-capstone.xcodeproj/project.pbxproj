@@ -14,6 +14,7 @@
 		8264381C298458EE00EA2141 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8264381B298458EE00EA2141 /* Preview Assets.xcassets */; };
 		8273976D29872C7800F425E3 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8273976C29872C7800F425E3 /* Onboarding.swift */; };
 		8273976F2987320200F425E3 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8273976E2987320200F425E3 /* HomeScreen.swift */; };
+		827397712987356700F425E3 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827397702987356700F425E3 /* Menu.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		8264381B298458EE00EA2141 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8273976C29872C7800F425E3 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		8273976E2987320200F425E3 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		827397702987356700F425E3 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			children = (
 				8264380E298458ED00EA2141 /* ios_capstoneApp.swift */,
 				8273976E2987320200F425E3 /* HomeScreen.swift */,
+				827397702987356700F425E3 /* Menu.swift */,
 				82643810298458ED00EA2141 /* Persistence.swift */,
 				8273976C29872C7800F425E3 /* Onboarding.swift */,
 				82643817298458EE00EA2141 /* Assets.xcassets */,
@@ -148,6 +151,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				827397712987356700F425E3 /* Menu.swift in Sources */,
 				82643814298458ED00EA2141 /* ios_capstone.xcdatamodeld in Sources */,
 				8273976F2987320200F425E3 /* HomeScreen.swift in Sources */,
 				8264380F298458ED00EA2141 /* ios_capstoneApp.swift in Sources */,

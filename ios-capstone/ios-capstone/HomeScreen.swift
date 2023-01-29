@@ -12,7 +12,11 @@ import SwiftUI
 struct HomeScreen: View {
     
     var body: some View {
-        
-     Text("placeholder")
+        TabView {
+            Menu().navigationBarBackButtonHidden(true)
+                .tabItem {
+                    Label ("Menu", systemImage: "list.dash")
+                }
+        }
     }
 }
