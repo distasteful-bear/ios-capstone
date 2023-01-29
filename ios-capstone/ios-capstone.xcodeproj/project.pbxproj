@@ -10,9 +10,10 @@
 		8264380F298458ED00EA2141 /* ios_capstoneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8264380E298458ED00EA2141 /* ios_capstoneApp.swift */; };
 		82643811298458ED00EA2141 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82643810298458ED00EA2141 /* Persistence.swift */; };
 		82643814298458ED00EA2141 /* ios_capstone.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 82643812298458ED00EA2141 /* ios_capstone.xcdatamodeld */; };
-		82643816298458ED00EA2141 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82643815298458ED00EA2141 /* ContentView.swift */; };
 		82643818298458EE00EA2141 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82643817298458EE00EA2141 /* Assets.xcassets */; };
 		8264381C298458EE00EA2141 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8264381B298458EE00EA2141 /* Preview Assets.xcassets */; };
+		8273976D29872C7800F425E3 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8273976C29872C7800F425E3 /* Onboarding.swift */; };
+		8273976F2987320200F425E3 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8273976E2987320200F425E3 /* HomeScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,10 +21,11 @@
 		8264380E298458ED00EA2141 /* ios_capstoneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_capstoneApp.swift; sourceTree = "<group>"; };
 		82643810298458ED00EA2141 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		82643813298458ED00EA2141 /* ios_capstone.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ios_capstone.xcdatamodel; sourceTree = "<group>"; };
-		82643815298458ED00EA2141 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		82643817298458EE00EA2141 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		82643819298458EE00EA2141 /* ios_capstone.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ios_capstone.entitlements; sourceTree = "<group>"; };
 		8264381B298458EE00EA2141 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8273976C29872C7800F425E3 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		8273976E2987320200F425E3 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,8 +59,9 @@
 			isa = PBXGroup;
 			children = (
 				8264380E298458ED00EA2141 /* ios_capstoneApp.swift */,
+				8273976E2987320200F425E3 /* HomeScreen.swift */,
 				82643810298458ED00EA2141 /* Persistence.swift */,
-				82643815298458ED00EA2141 /* ContentView.swift */,
+				8273976C29872C7800F425E3 /* Onboarding.swift */,
 				82643817298458EE00EA2141 /* Assets.xcassets */,
 				82643819298458EE00EA2141 /* ios_capstone.entitlements */,
 				82643812298458ED00EA2141 /* ios_capstone.xcdatamodeld */,
@@ -146,8 +149,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				82643814298458ED00EA2141 /* ios_capstone.xcdatamodeld in Sources */,
+				8273976F2987320200F425E3 /* HomeScreen.swift in Sources */,
 				8264380F298458ED00EA2141 /* ios_capstoneApp.swift in Sources */,
-				82643816298458ED00EA2141 /* ContentView.swift in Sources */,
+				8273976D29872C7800F425E3 /* Onboarding.swift in Sources */,
 				82643811298458ED00EA2141 /* Persistence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
