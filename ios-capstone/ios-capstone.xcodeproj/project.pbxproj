@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8264380F298458ED00EA2141 /* ios_capstoneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8264380E298458ED00EA2141 /* ios_capstoneApp.swift */; };
-		82643811298458ED00EA2141 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82643810298458ED00EA2141 /* Persistence.swift */; };
 		82643814298458ED00EA2141 /* ios_capstone.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 82643812298458ED00EA2141 /* ios_capstone.xcdatamodeld */; };
 		82643818298458EE00EA2141 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82643817298458EE00EA2141 /* Assets.xcassets */; };
 		8264381C298458EE00EA2141 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8264381B298458EE00EA2141 /* Preview Assets.xcassets */; };
@@ -16,12 +15,15 @@
 		8273976F2987320200F425E3 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8273976E2987320200F425E3 /* HomeScreen.swift */; };
 		827397712987356700F425E3 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827397702987356700F425E3 /* Menu.swift */; };
 		8273977329873F9700F425E3 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8273977229873F9700F425E3 /* UserProfile.swift */; };
+		82739776298751A900F425E3 /* FetchedObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82739774298751A900F425E3 /* FetchedObjects.swift */; };
+		82739777298751A900F425E3 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82739775298751A900F425E3 /* Persistence.swift */; };
+		82739779298751ED00F425E3 /* MenuList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82739778298751ED00F425E3 /* MenuList.swift */; };
+		8273977B298751F500F425E3 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8273977A298751F500F425E3 /* MenuItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8264380B298458ED00EA2141 /* ios-capstone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-capstone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8264380E298458ED00EA2141 /* ios_capstoneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios_capstoneApp.swift; sourceTree = "<group>"; };
-		82643810298458ED00EA2141 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		82643813298458ED00EA2141 /* ios_capstone.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ios_capstone.xcdatamodel; sourceTree = "<group>"; };
 		82643817298458EE00EA2141 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		82643819298458EE00EA2141 /* ios_capstone.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ios_capstone.entitlements; sourceTree = "<group>"; };
@@ -30,6 +32,10 @@
 		8273976E2987320200F425E3 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		827397702987356700F425E3 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		8273977229873F9700F425E3 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		82739774298751A900F425E3 /* FetchedObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedObjects.swift; sourceTree = "<group>"; };
+		82739775298751A900F425E3 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Persistence.swift; path = ../Persistence.swift; sourceTree = "<group>"; };
+		82739778298751ED00F425E3 /* MenuList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuList.swift; sourceTree = "<group>"; };
+		8273977A298751F500F425E3 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,11 +68,14 @@
 		8264380D298458ED00EA2141 /* ios-capstone */ = {
 			isa = PBXGroup;
 			children = (
+				82739774298751A900F425E3 /* FetchedObjects.swift */,
+				82739775298751A900F425E3 /* Persistence.swift */,
+				82739778298751ED00F425E3 /* MenuList.swift */,
+				8273977A298751F500F425E3 /* MenuItem.swift */,
 				8264380E298458ED00EA2141 /* ios_capstoneApp.swift */,
 				8273976E2987320200F425E3 /* HomeScreen.swift */,
 				827397702987356700F425E3 /* Menu.swift */,
 				8273977229873F9700F425E3 /* UserProfile.swift */,
-				82643810298458ED00EA2141 /* Persistence.swift */,
 				8273976C29872C7800F425E3 /* Onboarding.swift */,
 				82643817298458EE00EA2141 /* Assets.xcassets */,
 				82643819298458EE00EA2141 /* ios_capstone.entitlements */,
@@ -154,13 +163,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82739777298751A900F425E3 /* Persistence.swift in Sources */,
 				827397712987356700F425E3 /* Menu.swift in Sources */,
 				82643814298458ED00EA2141 /* ios_capstone.xcdatamodeld in Sources */,
 				8273977329873F9700F425E3 /* UserProfile.swift in Sources */,
 				8273976F2987320200F425E3 /* HomeScreen.swift in Sources */,
+				82739776298751A900F425E3 /* FetchedObjects.swift in Sources */,
 				8264380F298458ED00EA2141 /* ios_capstoneApp.swift in Sources */,
+				82739779298751ED00F425E3 /* MenuList.swift in Sources */,
 				8273976D29872C7800F425E3 /* Onboarding.swift in Sources */,
-				82643811298458ED00EA2141 /* Persistence.swift in Sources */,
+				8273977B298751F500F425E3 /* MenuItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
