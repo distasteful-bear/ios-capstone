@@ -12,6 +12,7 @@ import SwiftUI
 var kFirstName = "first name key"
 var kLastName = "last name key"
 var kEmail = "email key"
+let kIsLoggedIn = "kIsLoggedIn"
 
 struct Onboarding: View {
     @State var firstName: String = ""
@@ -23,7 +24,7 @@ struct Onboarding: View {
     var body: some View {
         NavigationView {
             VStack {
-                NavigationLink(destination: Menu(), isActive: $isLoggedIn){
+                NavigationLink(destination: HomeScreen(), isActive: $isLoggedIn){
                     EmptyView()
                 }
                 TextField(
@@ -51,8 +52,11 @@ struct Onboarding: View {
                         UserDefaults.standard.set(firstName, forKey: kFirstName)
                         UserDefaults.standard.set(lastName, forKey: kLastName)
                         UserDefaults.standard.set(email, forKey: kEmail)
+                        
                         print("form submitted successfully.")
+                        
                         isLoggedIn = true
+                        UserDefaults.standard.set(isLoggedIn, forKey: kIsLoggedIn)
                     }
                     
                 } .alert(isPresented: $showAlert) {
@@ -60,6 +64,10 @@ struct Onboarding: View {
                         title: Text("Error Submitting Form"),
                         message: Text("Make sure all required fields have been completed.")
                     )
+                }
+            }.onAppear {
+                if (UserDefaults.standard.bool(forKey: kIsLoggedIn)) {
+                    isLoggedIn = true
                 }
             }
         }

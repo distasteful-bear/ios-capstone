@@ -17,7 +17,7 @@ struct Menu: View {
             Text("Insert Descrition for Restaurant.")
             List {
                 // Menu Items.
-            }.navigationBarBackButtonHidden(true)
+            }
         }
     }
 }

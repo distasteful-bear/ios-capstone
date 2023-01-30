@@ -15,6 +15,7 @@
 		8273976D29872C7800F425E3 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8273976C29872C7800F425E3 /* Onboarding.swift */; };
 		8273976F2987320200F425E3 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8273976E2987320200F425E3 /* HomeScreen.swift */; };
 		827397712987356700F425E3 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827397702987356700F425E3 /* Menu.swift */; };
+		8273977329873F9700F425E3 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8273977229873F9700F425E3 /* UserProfile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		8273976C29872C7800F425E3 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		8273976E2987320200F425E3 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		827397702987356700F425E3 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		8273977229873F9700F425E3 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				8264380E298458ED00EA2141 /* ios_capstoneApp.swift */,
 				8273976E2987320200F425E3 /* HomeScreen.swift */,
 				827397702987356700F425E3 /* Menu.swift */,
+				8273977229873F9700F425E3 /* UserProfile.swift */,
 				82643810298458ED00EA2141 /* Persistence.swift */,
 				8273976C29872C7800F425E3 /* Onboarding.swift */,
 				82643817298458EE00EA2141 /* Assets.xcassets */,
@@ -153,6 +156,7 @@
 			files = (
 				827397712987356700F425E3 /* Menu.swift in Sources */,
 				82643814298458ED00EA2141 /* ios_capstone.xcdatamodeld in Sources */,
+				8273977329873F9700F425E3 /* UserProfile.swift in Sources */,
 				8273976F2987320200F425E3 /* HomeScreen.swift in Sources */,
 				8264380F298458ED00EA2141 /* ios_capstoneApp.swift in Sources */,
 				8273976D29872C7800F425E3 /* Onboarding.swift in Sources */,
