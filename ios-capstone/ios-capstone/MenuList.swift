@@ -9,5 +9,5 @@ import Foundation
 
 
 struct MenuList: Decodable {
-    let menu: [MenuItem] = []
+    var menu: [MenuItem] = []
 }
