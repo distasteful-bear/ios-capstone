@@ -16,17 +16,40 @@ struct UserProfile: View {
     
     
     var body: some View {
-        VStack {
-            Text ("Personal Information")
-            Image("profile-image-placeholder")
-            Text(firstNameRef)
-            Text(lastNameRef)
-            Text(emailRef)
-            Button ("Logout") {
-                UserDefaults.standard.set(false, forKey: "kIsLoggedIn")
-                self.presentation.wrappedValue.dismiss()
+        ScrollView {
+            
+                HStack {
+                    Image("externaldrive.trianglebadge.exclamationmark")
+                        .resizable().aspectRatio(contentMode: .fit)
+                        .frame(width: 100, height: 25)
+                    Spacer()
+                    
+                }
+            VStack {
+                Text ("Personal Information").font(.title2.bold()).frame(width: 300, alignment: .leading)
+                Text ("Avatar").font(.body).frame(width: 300, alignment: .leading)
+                Image(systemName: "externaldrive.trianglebadge.exclamationmark")
+                    .resizable().aspectRatio(contentMode: .fit)
+                    .frame(width: 300, height: 70, alignment: .topLeading)
+                    .padding()
+                Text("Name: ").font(.body.bold()).frame(width: 300, alignment: .leading)
+                Text(firstNameRef + " " + lastNameRef).frame(width: 300, alignment: .leading)
+                    .padding()
+                Text("Email: ").font(.body.bold()).frame(width: 300, alignment: .leading)
+                    .padding()
+                Text(emailRef).frame(width: 300, alignment: .leading)
+                    .padding()
+                Button {
+                    UserDefaults.standard.set(false, forKey: "kIsLoggedIn")
+                    self.presentation.wrappedValue.dismiss()
+                } label: {
+                    Text("Logout")
+                        .padding(.horizontal, 30)
+                }.buttonStyle(.borderedProminent)
+                .frame(width: 200, height: 30)
+                .padding()
+                .padding()
             }
-            Spacer()
         }
     }
 }

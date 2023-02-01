@@ -31,7 +31,7 @@ func findSortDescriptors(filterStyle: String)-> [NSSortDescriptor] {
     case "$-$$$":
         return [NSSortDescriptor(key:"price", ascending:true)]
     case "$$$-$":
-        return [NSSortDescriptor(key:"price", ascending:true)]
+        return [NSSortDescriptor(key:"price", ascending:false)]
     default:
         return [NSSortDescriptor(key:"title", ascending: true)]
     }
@@ -106,7 +106,6 @@ struct Menu: View {
                     Selection.title = itemSelection.title
                     Selection.image = itemSelection.image
                     Selection.price = itemSelection.price
-                    print (String(Selection.title ?? "Error pulling Dish Title from Core Data"))
                 }
                 try? persistence.container.viewContext.save()
             }
@@ -140,7 +139,7 @@ struct Menu: View {
         VStack {
             Text("Little Lemon")
             Text("Chicago")
-            Text("Insert Descrition for Restaurant.")
+            Text("We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.")
             
             HStack {
                 Button("A-Z", action: filterAcending)
@@ -166,6 +165,6 @@ struct Menu: View {
                     
                 }.frame(width: 300, alignment: .center)
             }
-        } .onAppear {if (!hasLoadedMenu) {getMenuData()}} // make sure when sorting buttons are pressed they change has loaded to false and reload from scratch the view.
+        } .onAppear {if (!hasLoadedMenu) {getMenuData()}}
     }
 }
