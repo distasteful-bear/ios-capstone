@@ -24,24 +24,64 @@ struct Onboarding: View {
     var body: some View {
         NavigationView {
             VStack {
+                
                 NavigationLink(destination: HomeScreen(), isActive: $isLoggedIn){
                     EmptyView()
                 }
-                TextField(
-                    "First Name",
-                    text: $firstName
-                )
                 
-                TextField(
-                    "Last Name",
-                    text: $lastName
-                )
+                // header
+                VStack {
+                    Image("Little Lemon logo - Standard")
+                        .resizable().aspectRatio(contentMode: .fit)
+                        .frame(width: 300, height: 60, alignment: .top)
+                }.background(styleWhite)
                 
-                TextField(
-                    "Email",
-                    text: $email
-                )
-                Button ("Register") {
+                
+                // welcome tag
+                VStack {
+                    Text("Welcome!")
+                        .font(Font.custom("Martel-Black", size: 20))
+                        .frame(width: 350, alignment: .topLeading)
+                        .padding(.vertical, 30)
+                        .padding(.horizontal, 100)
+                        .foregroundColor(styleYellow)
+                }.background(styleGreen)
+                
+                
+                // form
+                ScrollView {
+                    VStack {
+                        
+                        Text("Create Account:").font(.title3).foregroundColor(styleGreen).bold().padding(.top, 50)
+                        ZStack {
+                            TextField(
+                                "First Name",
+                                text: $firstName
+                            ).padding(.horizontal, 10)
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(styleGreen, lineWidth: 3)
+                        }.frame(width: 290, height: 30)
+                        ZStack {
+                            TextField(
+                                "Last Name",
+                                text: $lastName
+                            ).padding(.horizontal, 10)
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(styleGreen, lineWidth: 3)
+                        }.frame(width: 290, height: 30)
+                        ZStack {
+                            TextField(
+                                "Email",
+                                text: $email
+                            ).padding(.horizontal, 10)
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(styleGreen, lineWidth: 3)
+                        }.frame(width: 290, height: 30)
+                    }.frame(width: 300)
+                }
+                
+                // login button
+                Button {
                     if (firstName.isEmpty) {
                         showAlert = true
                     } else if (lastName.isEmpty) {
@@ -59,12 +99,18 @@ struct Onboarding: View {
                         UserDefaults.standard.set(isLoggedIn, forKey: kIsLoggedIn)
                     }
                     
-                } .alert(isPresented: $showAlert) {
-                    Alert (
-                        title: Text("Error Submitting Form"),
-                        message: Text("Make sure all required fields have been completed.")
-                    )
-                }
+                } label: {Text("Login").padding(.horizontal, 80)}
+                    .buttonStyle(.borderedProminent)
+                    .padding()
+                    .alert(isPresented: $showAlert) {
+                        Alert (
+                            title: Text("Error Submitting Form"),
+                            message: Text("Make sure all required fields have been completed.")
+                        )
+                    }.tint(Color(#colorLiteral(red: 0.286, green: 0.369, blue: 0.341, alpha: 1)))
+                Spacer()
+                
+            
             }.onAppear {
                 if (UserDefaults.standard.bool(forKey: kIsLoggedIn)) {
                     isLoggedIn = true

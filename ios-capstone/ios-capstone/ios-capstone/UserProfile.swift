@@ -44,8 +44,9 @@ struct UserProfile: View {
                     self.presentation.wrappedValue.dismiss()
                 } label: {
                     Text("Logout")
-                        .padding(.horizontal, 30)
+                        .padding(.horizontal, 60)
                 }.buttonStyle(.borderedProminent)
+                .tint(Color(#colorLiteral(red: 0.286, green: 0.369, blue: 0.341, alpha: 1)))
                 .frame(width: 200, height: 30)
                 .padding()
                 .padding()

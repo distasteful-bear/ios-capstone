@@ -20,6 +20,14 @@
 		82739779298751ED00F425E3 /* MenuList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82739778298751ED00F425E3 /* MenuList.swift */; };
 		8273977B298751F500F425E3 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8273977A298751F500F425E3 /* MenuItem.swift */; };
 		8296265B2989F1D100BC7892 /* ExampleDatabase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 829626592989F1D100BC7892 /* ExampleDatabase.xcdatamodeld */; };
+		82B7A3D2298B103600B77C26 /* StyleSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B7A3D1298B103600B77C26 /* StyleSheet.swift */; };
+		82B7A3DA298B178700B77C26 /* Martel-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 82B7A3D3298B178700B77C26 /* Martel-SemiBold.ttf */; };
+		82B7A3DB298B178700B77C26 /* Martel-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 82B7A3D4298B178700B77C26 /* Martel-Black.ttf */; };
+		82B7A3DC298B178700B77C26 /* Martel-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 82B7A3D5298B178700B77C26 /* Martel-Regular.ttf */; };
+		82B7A3DD298B178700B77C26 /* Martel-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 82B7A3D6298B178700B77C26 /* Martel-Bold.ttf */; };
+		82B7A3DE298B178700B77C26 /* Martel-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 82B7A3D7298B178700B77C26 /* Martel-ExtraBold.ttf */; };
+		82B7A3DF298B178700B77C26 /* Martel-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 82B7A3D8298B178700B77C26 /* Martel-ExtraLight.ttf */; };
+		82B7A3E0298B178700B77C26 /* Martel-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 82B7A3D9298B178700B77C26 /* Martel-Light.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +46,14 @@
 		82739778298751ED00F425E3 /* MenuList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuList.swift; sourceTree = "<group>"; };
 		8273977A298751F500F425E3 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		8296265A2989F1D100BC7892 /* ExampleDatabase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExampleDatabase.xcdatamodel; sourceTree = "<group>"; };
+		82B7A3D1298B103600B77C26 /* StyleSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleSheet.swift; sourceTree = "<group>"; };
+		82B7A3D3298B178700B77C26 /* Martel-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Martel-SemiBold.ttf"; sourceTree = "<group>"; };
+		82B7A3D4298B178700B77C26 /* Martel-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Martel-Black.ttf"; sourceTree = "<group>"; };
+		82B7A3D5298B178700B77C26 /* Martel-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Martel-Regular.ttf"; sourceTree = "<group>"; };
+		82B7A3D6298B178700B77C26 /* Martel-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Martel-Bold.ttf"; sourceTree = "<group>"; };
+		82B7A3D7298B178700B77C26 /* Martel-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Martel-ExtraBold.ttf"; sourceTree = "<group>"; };
+		82B7A3D8298B178700B77C26 /* Martel-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Martel-ExtraLight.ttf"; sourceTree = "<group>"; };
+		82B7A3D9298B178700B77C26 /* Martel-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Martel-Light.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +95,7 @@
 				827397702987356700F425E3 /* Menu.swift */,
 				8273977229873F9700F425E3 /* UserProfile.swift */,
 				8273976C29872C7800F425E3 /* Onboarding.swift */,
+				82B7A3D1298B103600B77C26 /* StyleSheet.swift */,
 				82643817298458EE00EA2141 /* Assets.xcassets */,
 				82643819298458EE00EA2141 /* ios_capstone.entitlements */,
 				82643812298458ED00EA2141 /* ios_capstone.xcdatamodeld */,
@@ -91,6 +108,13 @@
 		8264381A298458EE00EA2141 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				82B7A3D4298B178700B77C26 /* Martel-Black.ttf */,
+				82B7A3D6298B178700B77C26 /* Martel-Bold.ttf */,
+				82B7A3D7298B178700B77C26 /* Martel-ExtraBold.ttf */,
+				82B7A3D8298B178700B77C26 /* Martel-ExtraLight.ttf */,
+				82B7A3D9298B178700B77C26 /* Martel-Light.ttf */,
+				82B7A3D5298B178700B77C26 /* Martel-Regular.ttf */,
+				82B7A3D3298B178700B77C26 /* Martel-SemiBold.ttf */,
 				8264381B298458EE00EA2141 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -154,8 +178,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82B7A3DA298B178700B77C26 /* Martel-SemiBold.ttf in Resources */,
+				82B7A3DC298B178700B77C26 /* Martel-Regular.ttf in Resources */,
 				8264381C298458EE00EA2141 /* Preview Assets.xcassets in Resources */,
 				82643818298458EE00EA2141 /* Assets.xcassets in Resources */,
+				82B7A3DE298B178700B77C26 /* Martel-ExtraBold.ttf in Resources */,
+				82B7A3DD298B178700B77C26 /* Martel-Bold.ttf in Resources */,
+				82B7A3DB298B178700B77C26 /* Martel-Black.ttf in Resources */,
+				82B7A3E0298B178700B77C26 /* Martel-Light.ttf in Resources */,
+				82B7A3DF298B178700B77C26 /* Martel-ExtraLight.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,6 +202,7 @@
 				827397712987356700F425E3 /* Menu.swift in Sources */,
 				82643814298458ED00EA2141 /* ios_capstone.xcdatamodeld in Sources */,
 				8273977329873F9700F425E3 /* UserProfile.swift in Sources */,
+				82B7A3D2298B103600B77C26 /* StyleSheet.swift in Sources */,
 				8273976F2987320200F425E3 /* HomeScreen.swift in Sources */,
 				82739776298751A900F425E3 /* FetchedObjects.swift in Sources */,
 				8264380F298458ED00EA2141 /* ios_capstoneApp.swift in Sources */,
