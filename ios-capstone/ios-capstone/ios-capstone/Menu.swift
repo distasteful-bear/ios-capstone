@@ -12,26 +12,69 @@ import CoreData
 var JSONraw =  ""
 var controller = PersistenceController()
 var hasLoadedMenu = false
+ 
+func fetchController(searchOn: Bool, filter: String, searchTerm: String)-> [NSSortDescriptor] {
+    if searchOn {
+        return findSortDescriptors(filterStyle: filter)
+    }
+    else {
+        return [NSSortDescriptor(key:"title", ascending: true)]
+    }
+}
+
+func findSortDescriptors(filterStyle: String)-> [NSSortDescriptor] {
+    switch filterStyle {
+    case "A-Z":
+        return [NSSortDescriptor(key:"title", ascending: true)]
+    case "Z-A":
+        return [NSSortDescriptor(key:"title", ascending: false)]
+    case "$-$$$":
+        return [NSSortDescriptor(key:"price", ascending:true)]
+    case "$$$-$":
+        return [NSSortDescriptor(key:"price", ascending:true)]
+    default:
+        return [NSSortDescriptor(key:"title", ascending: true)]
+    }
+}
+
+func findSearchDescriptors(search: String)-> [NSSortDescriptor] {
+    
+    return [NSSortDescriptor()]
+}
+
+func predicateController(searchOn: Bool, searchTerm: String)-> NSPredicate {
+    var result = NSPredicate(format: "title CONTAINS[cd] %@", searchTerm)
+    return result
+}
+
+
+
+
+
+var searchOn: Bool = false
+var filter: String = "A-Z"
+var searchTerm: String = "B"
 
 struct Menu: View {
     @Environment(\.managedObjectContext) private var viewContext
+    
     func getMenuData() {
         hasLoadedMenu = true
         controller.clear()
         
         let dataAddress: String =
-            "https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Working-With-Data-API/main/menu.json"
+        "https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Working-With-Data-API/main/menu.json"
         
         let url = URL(string: dataAddress)
         let request = URLRequest(url: url!)
         let dataTask = URLSession.shared.dataTask(with: request) { data, response, error in
             if let data = data,
                let string = String(data: data, encoding: .utf8) {
-                    print(string)
-                    JSONraw = string
-                }
-                let jsonData = JSONraw.data(using: .utf8)
-                
+                print(string)
+                JSONraw = string
+            }
+            let jsonData = JSONraw.data(using: .utf8)
+            
             if let menu = try? JSONDecoder().decode(MenuList.self, from: jsonData!) {
                 print (menu)
                 for itemSelection in menu.menu {
@@ -48,17 +91,67 @@ struct Menu: View {
         print("dataTask has run.")
     }
     
+    // this was the first shot at sorting capacity, didnt go so hot haha, ill try again below.
+    /*
+    func refineResults(sort: String)-> FetchedResults<Dish> {
+        if searchOn {
+            @FetchRequest(
+                sortDescriptors: [NSSortDescriptor(keyPath: \Dish.title,
+                                                   ascending: true)],
+                predicate: NSPredicate(format: "title CONTAINS[cd] %@", sort),
+                animation: .default) var dishes: FetchedResults<Dish>
+        }
+        else {
+            switch sort {
+            case "$-$$$":
+                @FetchRequest(
+                    sortDescriptors: [NSSortDescriptor(keyPath: \Dish.price,
+                    ascending: true)],
+                    animation: .default)  var dishes: FetchedResults<Dish>
+            case "A-Z":
+                @FetchRequest(
+                    sortDescriptors: [NSSortDescriptor(keyPath: \Dish.title,
+                    ascending: true)],
+                    animation: .default)  var dishes: FetchedResults<Dish>
+            case "$$$-$":
+                @FetchRequest(
+                    sortDescriptors: [NSSortDescriptor(keyPath: \Dish.price,
+                    ascending: false)],
+                    animation: .default)  var dishes: FetchedResults<Dish>
+            case "Z-A":
+                @FetchRequest(
+                    sortDescriptors: [NSSortDescriptor(keyPath: \Dish.title,
+                    ascending: false)],
+                    animation: .default)  var dishes: FetchedResults<Dish>
+            default:
+                @FetchRequest(
+                    sortDescriptors: [NSSortDescriptor(keyPath: \Dish.title,
+                    ascending: true)],
+                    animation: .default)  var dishes: FetchedResults<Dish>
+            }
+        }
+    }
+    */
     
     
     
-
-    @FetchRequest(sortDescriptors: []) var dishes: FetchedResults<Dish>
+    
+    
+    
+// predicate: predicateController(searchOn: searchOn, searchTerm: searchTerm)
+    @FetchRequest(sortDescriptors: fetchController(searchOn: searchOn, filter: filter, searchTerm: searchTerm),
+                    predicate: predicateController(searchOn: searchOn, searchTerm: searchTerm))
+                  var dishes: FetchedResults<Dish>
+    
+    
     var body: some View {
         
         VStack {
             Text("Little Lemon")
             Text("Chicago")
             Text("Insert Descrition for Restaurant.")
+            
+            
             List (dishes) {dish in
                 HStack {
                     VStack {
@@ -78,6 +171,8 @@ struct Menu: View {
                     
                 }.frame(width: 300, alignment: .center)
             }
-        } .onAppear {if (!hasLoadedMenu) {getMenuData()}}
+        } .onAppear {if (!hasLoadedMenu) {getMenuData()}
+            
+        } // make sure when sorting buttons are pressed they change has loaded to false and reload from scratch the view.
     }
 }
