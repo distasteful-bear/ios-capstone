@@ -49,14 +49,17 @@ struct Menu: View {
     
     
 
-    
+    @FetchRequest(sortDescriptors: []) var dishes: FetchedResults<Dish>
     var body: some View {
         
         VStack {
             Text("Little Lemon")
             Text("Chicago")
             Text("Insert Descrition for Restaurant.")
-
+            List (dishes) {dish in
+                Text(dish.title ?? "Unknown")
+                
+            }
         } .onAppear {getMenuData()}
     }
 }
