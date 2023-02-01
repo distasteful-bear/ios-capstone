@@ -52,7 +52,21 @@ func predicateController(searchOn: Bool, searchTerm: String)-> NSPredicate {
     }
 }
 
-
+func clearDatabase(dishes: [Dish]) {
+        let range = dishes.count - 1
+        for count in 0...range {
+            // find this book in our fetch request
+            let dish = dishes[count]
+            
+            // delete it from the context
+            persistence.container.viewContext.delete(dish)
+            
+        }
+        
+        // save the context
+        try? persistence.container.viewContext.save()
+        print ("Attempted to clear Database.")
+}
 
 
 
@@ -62,10 +76,17 @@ var searchTerm: String = "10"
 
 struct Menu: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @State var refresh: Bool = false
+    
+    func update() {
+       refresh.toggle()
+        print ("Updated screen.")
+    }
     
     func getMenuData() {
-        hasLoadedMenu = true
-        controller.clear()
+        if (hasLoadedMenu) {
+            clearDatabase(dishes: Array(dishes))
+        }
         
         let dataAddress: String =
         "https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Working-With-Data-API/main/menu.json"
@@ -75,13 +96,11 @@ struct Menu: View {
         let dataTask = URLSession.shared.dataTask(with: request) { data, response, error in
             if let data = data,
                let string = String(data: data, encoding: .utf8) {
-                print(string)
                 JSONraw = string
             }
             let jsonData = JSONraw.data(using: .utf8)
             
             if let menu = try? JSONDecoder().decode(MenuList.self, from: jsonData!) {
-                print (menu)
                 for itemSelection in menu.menu {
                     let Selection =  Dish(context: viewContext)
                     Selection.title = itemSelection.title
@@ -93,60 +112,27 @@ struct Menu: View {
             }
         }
         dataTask.resume()
+        hasLoadedMenu = true
+        update()
         print("dataTask has run.")
     }
     
-    // this was the first shot at sorting capacity, didnt go so hot haha, ill try again below.
-    /*
-    func refineResults(sort: String)-> FetchedResults<Dish> {
-        if searchOn {
-            @FetchRequest(
-                sortDescriptors: [NSSortDescriptor(keyPath: \Dish.title,
-                                                   ascending: true)],
-                predicate: NSPredicate(format: "title CONTAINS[cd] %@", sort),
-                animation: .default) var dishes: FetchedResults<Dish>
-        }
-        else {
-            switch sort {
-            case "$-$$$":
-                @FetchRequest(
-                    sortDescriptors: [NSSortDescriptor(keyPath: \Dish.price,
-                    ascending: true)],
-                    animation: .default)  var dishes: FetchedResults<Dish>
-            case "A-Z":
-                @FetchRequest(
-                    sortDescriptors: [NSSortDescriptor(keyPath: \Dish.title,
-                    ascending: true)],
-                    animation: .default)  var dishes: FetchedResults<Dish>
-            case "$$$-$":
-                @FetchRequest(
-                    sortDescriptors: [NSSortDescriptor(keyPath: \Dish.price,
-                    ascending: false)],
-                    animation: .default)  var dishes: FetchedResults<Dish>
-            case "Z-A":
-                @FetchRequest(
-                    sortDescriptors: [NSSortDescriptor(keyPath: \Dish.title,
-                    ascending: false)],
-                    animation: .default)  var dishes: FetchedResults<Dish>
-            default:
-                @FetchRequest(
-                    sortDescriptors: [NSSortDescriptor(keyPath: \Dish.title,
-                    ascending: true)],
-                    animation: .default)  var dishes: FetchedResults<Dish>
-            }
-        }
-    }
-    */
     
-    
-    
-    
-    
-    
-// predicate: predicateController(searchOn: searchOn, searchTerm: searchTerm)
     @FetchRequest(sortDescriptors: fetchController(searchOn: searchOn, filter: filter, searchTerm: searchTerm),
                     predicate: predicateController(searchOn: searchOn, searchTerm: searchTerm))
                   var dishes: FetchedResults<Dish>
+    
+    func filterAcending ()->Void {
+        filter = "A=Z"
+        print ("sort type changed to A-Z")
+        getMenuData()
+    }
+    
+    func filterNotAcending () -> Void {
+        filter = "Z-A"
+        print ("sort type changed to Z-A")
+        getMenuData()
+    }
     
     
     var body: some View {
@@ -155,6 +141,12 @@ struct Menu: View {
             Text("Little Lemon")
             Text("Chicago")
             Text("Insert Descrition for Restaurant.")
+            
+            HStack {
+                Button("A-Z", action: filterAcending)
+                Button("Z-A", action: filterNotAcending)
+            }
+            
             List (dishes) {dish in
                 HStack {
                     VStack {
@@ -174,8 +166,6 @@ struct Menu: View {
                     
                 }.frame(width: 300, alignment: .center)
             }
-        } .onAppear {if (!hasLoadedMenu) {getMenuData()}
-            
-        } // make sure when sorting buttons are pressed they change has loaded to false and reload from scratch the view.
+        } .onAppear {if (!hasLoadedMenu) {getMenuData()}} // make sure when sorting buttons are pressed they change has loaded to false and reload from scratch the view.
     }
 }
