@@ -10,12 +10,15 @@ import SwiftUI
 import CoreData
 
 var JSONraw =  ""
+var controller = PersistenceController()
+var hasLoadedMenu = false
 
 struct Menu: View {
-
     @Environment(\.managedObjectContext) private var viewContext
     func getMenuData() {
-
+        hasLoadedMenu = true
+        controller.clear()
+        
         let dataAddress: String =
             "https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Working-With-Data-API/main/menu.json"
         
@@ -31,7 +34,6 @@ struct Menu: View {
                 
             if let menu = try? JSONDecoder().decode(MenuList.self, from: jsonData!) {
                 print (menu)
-                print (menu.menu[1].title)
                 for itemSelection in menu.menu {
                     let Selection =  Dish(context: viewContext)
                     Selection.title = itemSelection.title
@@ -43,6 +45,7 @@ struct Menu: View {
             }
         }
         dataTask.resume()
+        print("dataTask has run.")
     }
     
     
@@ -57,9 +60,24 @@ struct Menu: View {
             Text("Chicago")
             Text("Insert Descrition for Restaurant.")
             List (dishes) {dish in
-                Text(dish.title ?? "Unknown")
-                
+                HStack {
+                    VStack {
+                        Text(dish.title ?? "Unknown title").frame(alignment: .leading).font(.title3)
+                        Text(dish.price ?? "Unknown Price").frame( alignment: .leading).font(.body)
+                    }.frame(alignment: .leading)
+                    Spacer()
+                    AsyncImage(url: URL(string:dish.image ?? "ellipsis")) { image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                        
+                    } placeholder: {
+                        Color.gray
+                    }
+                    .frame(width: 50, height: 50, alignment: .trailing)
+                    
+                }.frame(width: 300, alignment: .center)
             }
-        } .onAppear {getMenuData()}
+        } .onAppear {if (!hasLoadedMenu) {getMenuData()}}
     }
 }
