@@ -16,21 +16,23 @@ struct UserProfile: View {
     
     
     var body: some View {
+        
+        
+        
         ScrollView {
-            
                 HStack {
-                    Image("externaldrive.trianglebadge.exclamationmark")
-                        .resizable().aspectRatio(contentMode: .fit)
-                        .frame(width: 100, height: 25)
-                    Spacer()
-                    
+                    // header
+                    Image("Little Lemon logo - Standard")
+                            .resizable().aspectRatio(contentMode: .fit)
+                            .frame(width: 300, height: 60, alignment: .center)
                 }
+            
             VStack {
                 Text ("Personal Information").font(.title2.bold()).frame(width: 300, alignment: .leading)
                 Text ("Avatar").font(.body).frame(width: 300, alignment: .leading)
-                Image(systemName: "externaldrive.trianglebadge.exclamationmark")
+                Image("Profile Example")
                     .resizable().aspectRatio(contentMode: .fit)
-                    .frame(width: 300, height: 70, alignment: .topLeading)
+                    .frame(width: 300, height: 100, alignment: .topLeading)
                     .padding()
                 Text("Name: ").font(.body.bold()).frame(width: 300, alignment: .leading)
                 Text(firstNameRef + " " + lastNameRef).frame(width: 300, alignment: .leading)

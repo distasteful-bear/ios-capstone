@@ -34,19 +34,25 @@ struct Onboarding: View {
                     Image("Little Lemon logo - Standard")
                         .resizable().aspectRatio(contentMode: .fit)
                         .frame(width: 300, height: 60, alignment: .top)
+                Divider()
                 }.background(styleWhite)
                 
+
                 
-                // welcome tag
+                
+                // welcome tag this kinda looks trash? idk decent idea but execution is trash
+                /*
                 VStack {
                     Text("Welcome!")
-                        .font(Font.custom("Martel-Black", size: 20))
+                        .bold()
+                        .font(.title)
                         .frame(width: 350, alignment: .topLeading)
                         .padding(.vertical, 30)
                         .padding(.horizontal, 100)
                         .foregroundColor(styleYellow)
-                }.background(styleGreen)
-                
+                }.background(styleGreen).frame(height: 100)
+                */
+                 
                 
                 // form
                 ScrollView {
@@ -99,7 +105,7 @@ struct Onboarding: View {
                         UserDefaults.standard.set(isLoggedIn, forKey: kIsLoggedIn)
                     }
                     
-                } label: {Text("Login").padding(.horizontal, 80)}
+                } label: {Text("Login").padding(.horizontal, 80).bold()}
                     .buttonStyle(.borderedProminent)
                     .padding()
                     .alert(isPresented: $showAlert) {

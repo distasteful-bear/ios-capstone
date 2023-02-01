@@ -9,10 +9,12 @@ import Foundation
 import SwiftUI
 import CoreData
 
+
 var JSONraw =  ""
 var controller = PersistenceController()
 var hasLoadedMenu = false
- 
+
+
 func fetchController(searchOn: Bool, filter: String, searchTerm: String)-> [NSSortDescriptor] {
     if searchOn {
         return [NSSortDescriptor(key:"title", ascending: true)]
@@ -21,6 +23,7 @@ func fetchController(searchOn: Bool, filter: String, searchTerm: String)-> [NSSo
         return findSortDescriptors(filterStyle: filter)
     }
 }
+
 
 func findSortDescriptors(filterStyle: String)-> [NSSortDescriptor] {
     switch filterStyle {
@@ -37,9 +40,11 @@ func findSortDescriptors(filterStyle: String)-> [NSSortDescriptor] {
     }
 }
 
+
 func findSearchDescriptors(search: String)-> [NSSortDescriptor] {
     return [NSSortDescriptor()]
 }
+
 
 func predicateController(searchOn: Bool, searchTerm: String)-> NSPredicate {
     if searchOn {
@@ -51,6 +56,7 @@ func predicateController(searchOn: Bool, searchTerm: String)-> NSPredicate {
         return result
     }
 }
+
 
 func clearDatabase(dishes: [Dish]) {
         let range = dishes.count - 1
@@ -73,6 +79,8 @@ func clearDatabase(dishes: [Dish]) {
 var searchOn: Bool = false
 var filter: String = "A-Z"
 var searchTerm: String = "10"
+
+
 
 struct Menu: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -137,20 +145,38 @@ struct Menu: View {
     var body: some View {
         
         VStack {
-            Text("Little Lemon")
-            Text("Chicago")
-            Text("We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.")
             
+            // header
             HStack {
-                Button("A-Z", action: filterAcending)
-                Button("Z-A", action: filterNotAcending)
-            }
+                Image("Little Lemon logo - Standard")
+                    .resizable().aspectRatio(contentMode: .fit)
+                    .frame(width: 300, height: 60, alignment: .top)
+                Image("Profile Example")
+                    .resizable().aspectRatio(contentMode: .fit)
+                    .frame(width: 100, height: 60)
+            }.background(styleWhite)
+            
+            // Hero Title thing
+            VStack {
+                VStack {
+                    Text("Little Lemon").font(.largeTitle).foregroundColor(styleYellow).frame(width: 300, alignment: .leading)
+                    Text("Chicago").font(.title2).foregroundColor(styleWhite).frame(width: 300, alignment: .leading)
+                    Text("We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.")
+                        .font(.body).foregroundColor(styleWhite)
+                        .padding(.vertical, 5)
+                }.frame(width: 300)
+                
+                HStack {
+                    Button("A-Z", action: filterAcending).buttonStyle(.bordered).foregroundColor(styleWhite)
+                    Button("Z-A", action: filterNotAcending).buttonStyle(.bordered).foregroundColor(styleWhite)
+                }.foregroundColor(styleGrey)
+            }.frame(width: 400, height: 250).background(styleGreen)
             
             List (dishes) {dish in
                 HStack {
                     VStack {
-                        Text(dish.title ?? "Unknown title").frame(alignment: .leading).font(.title3)
-                        Text(dish.price ?? "Unknown Price").frame( alignment: .leading).font(.body)
+                        Text(dish.title ?? "Unknown title").frame(width: 150,alignment: .leading).font(.title3)
+                        Text("$" + (dish.price ?? "Unknown Price")).frame(width: 150, alignment: .leading).font(.body)
                     }.frame(alignment: .leading)
                     Spacer()
                     AsyncImage(url: URL(string:dish.image ?? "ellipsis")) { image in
