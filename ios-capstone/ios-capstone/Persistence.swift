@@ -8,7 +8,7 @@ struct PersistenceController {
 
     init() {
         container = NSPersistentContainer(name: "ExampleDatabase")
-        //container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Working-With-Data-API/main/menu.json")
+        container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         container.loadPersistentStores(completionHandler: {_,_ in })
         container.viewContext.automaticallyMergesChangesFromParent = true
     }

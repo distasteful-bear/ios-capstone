@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import CoreData
 
 var JSONraw =  ""
 
@@ -38,14 +39,19 @@ struct Menu: View {
                     Selection.price = itemSelection.price
                     print (String(Selection.title ?? "Error pulling Dish Title from Core Data"))
                 }
-                try? persistence.container.viewContext.save() // this is crashing everything, no idea why tho
+                try? persistence.container.viewContext.save()
             }
         }
         dataTask.resume()
     }
     
     
+    
+    
+
+    
     var body: some View {
+        
         VStack {
             Text("Little Lemon")
             Text("Chicago")
