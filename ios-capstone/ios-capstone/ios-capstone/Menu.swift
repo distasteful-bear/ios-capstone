@@ -11,8 +11,10 @@ import SwiftUI
 var JSONraw =  ""
 
 struct Menu: View {
+
+    @Environment(\.managedObjectContext) private var viewContext
     func getMenuData() {
-        
+
         let dataAddress: String =
             "https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Working-With-Data-API/main/menu.json"
         
@@ -24,16 +26,22 @@ struct Menu: View {
                     print(string)
                     JSONraw = string
                 }
-            let jsonData = JSONraw.data(using: .utf8)
-            let menu = try! JSONDecoder().decode(MenuList.self, from: jsonData!)
-            print (menu)
-            print (menu.menu[1].title)
-            
+                let jsonData = JSONraw.data(using: .utf8)
+                
+            if let menu = try? JSONDecoder().decode(MenuList.self, from: jsonData!) {
+                print (menu)
+                print (menu.menu[1].title)
+                for itemSelection in menu.menu {
+                    let Selection =  Dish(context: viewContext)
+                    Selection.title = itemSelection.title
+                    Selection.image = itemSelection.image
+                    Selection.price = itemSelection.price
+                    print (String(Selection.title ?? "Error pulling Dish Title from Core Data"))
+                }
+                try? persistence.container.viewContext.save() // this is crashing everything, no idea why tho
+            }
         }
         dataTask.resume()
-        
-        // parse JSON here.
-        
     }
     
     
@@ -42,9 +50,7 @@ struct Menu: View {
             Text("Little Lemon")
             Text("Chicago")
             Text("Insert Descrition for Restaurant.")
-            List {
-                // Menu Items.
-            }
+
         } .onAppear {getMenuData()}
     }
 }

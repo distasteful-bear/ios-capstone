@@ -19,6 +19,7 @@
 		82739777298751A900F425E3 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82739775298751A900F425E3 /* Persistence.swift */; };
 		82739779298751ED00F425E3 /* MenuList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82739778298751ED00F425E3 /* MenuList.swift */; };
 		8273977B298751F500F425E3 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8273977A298751F500F425E3 /* MenuItem.swift */; };
+		8296265B2989F1D100BC7892 /* ExampleDatabase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 829626592989F1D100BC7892 /* ExampleDatabase.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		82739775298751A900F425E3 /* Persistence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Persistence.swift; path = ../Persistence.swift; sourceTree = "<group>"; };
 		82739778298751ED00F425E3 /* MenuList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuList.swift; sourceTree = "<group>"; };
 		8273977A298751F500F425E3 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
+		8296265A2989F1D100BC7892 /* ExampleDatabase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExampleDatabase.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				82643817298458EE00EA2141 /* Assets.xcassets */,
 				82643819298458EE00EA2141 /* ios_capstone.entitlements */,
 				82643812298458ED00EA2141 /* ios_capstone.xcdatamodeld */,
+				829626592989F1D100BC7892 /* ExampleDatabase.xcdatamodeld */,
 				8264381A298458EE00EA2141 /* Preview Content */,
 			);
 			path = "ios-capstone";
@@ -163,6 +166,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8296265B2989F1D100BC7892 /* ExampleDatabase.xcdatamodeld in Sources */,
 				82739777298751A900F425E3 /* Persistence.swift in Sources */,
 				827397712987356700F425E3 /* Menu.swift in Sources */,
 				82643814298458ED00EA2141 /* ios_capstone.xcdatamodeld in Sources */,
@@ -391,6 +395,16 @@
 			);
 			currentVersion = 82643813298458ED00EA2141 /* ios_capstone.xcdatamodel */;
 			path = ios_capstone.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		829626592989F1D100BC7892 /* ExampleDatabase.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8296265A2989F1D100BC7892 /* ExampleDatabase.xcdatamodel */,
+			);
+			currentVersion = 8296265A2989F1D100BC7892 /* ExampleDatabase.xcdatamodel */;
+			path = ExampleDatabase.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
