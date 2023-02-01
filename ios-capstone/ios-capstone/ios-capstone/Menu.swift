@@ -15,10 +15,10 @@ var hasLoadedMenu = false
  
 func fetchController(searchOn: Bool, filter: String, searchTerm: String)-> [NSSortDescriptor] {
     if searchOn {
-        return findSortDescriptors(filterStyle: filter)
+        return [NSSortDescriptor(key:"title", ascending: true)]
     }
     else {
-        return [NSSortDescriptor(key:"title", ascending: true)]
+        return findSortDescriptors(filterStyle: filter)
     }
 }
 
@@ -38,13 +38,18 @@ func findSortDescriptors(filterStyle: String)-> [NSSortDescriptor] {
 }
 
 func findSearchDescriptors(search: String)-> [NSSortDescriptor] {
-    
     return [NSSortDescriptor()]
 }
 
 func predicateController(searchOn: Bool, searchTerm: String)-> NSPredicate {
-    var result = NSPredicate(format: "title CONTAINS[cd] %@", searchTerm)
-    return result
+    if searchOn {
+        let result = NSPredicate(format: "title CONTAINS[cd] %@", searchTerm)
+        return result
+    }
+    else {
+        let result = NSPredicate(format: "price CONTAINS[cd] %@", "10")
+        return result
+    }
 }
 
 
@@ -53,7 +58,7 @@ func predicateController(searchOn: Bool, searchTerm: String)-> NSPredicate {
 
 var searchOn: Bool = false
 var filter: String = "A-Z"
-var searchTerm: String = "B"
+var searchTerm: String = "10"
 
 struct Menu: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -150,8 +155,6 @@ struct Menu: View {
             Text("Little Lemon")
             Text("Chicago")
             Text("Insert Descrition for Restaurant.")
-            
-            
             List (dishes) {dish in
                 HStack {
                     VStack {
