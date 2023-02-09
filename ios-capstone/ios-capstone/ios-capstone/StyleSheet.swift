@@ -11,7 +11,6 @@ import SwiftUI
 
 
 
-
 let styleGrey = Color(#colorLiteral(red: 0.686, green: 0.686, blue: 0.686, alpha: 1)) // #afafaf
 
 let styleGreen = Color(#colorLiteral(red: 0.286, green: 0.369, blue: 0.341, alpha: 1)) // #495e57

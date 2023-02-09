@@ -58,14 +58,14 @@ struct Onboarding: View {
                 ScrollView {
                     VStack {
                         
-                        Text("Create Account:").font(.title3).foregroundColor(styleGreen).bold().padding(.top, 50)
+                        Text("Create Account:").font(.title3).foregroundColor(styleBlack).bold().padding(.top, 50)
                         ZStack {
                             TextField(
                                 "First Name",
                                 text: $firstName
                             ).padding(.horizontal, 10)
                             RoundedRectangle(cornerRadius: 10)
-                                .stroke(styleGreen, lineWidth: 3)
+                                .stroke(styleBlack, lineWidth: 3)
                         }.frame(width: 290, height: 30)
                         ZStack {
                             TextField(
@@ -73,7 +73,7 @@ struct Onboarding: View {
                                 text: $lastName
                             ).padding(.horizontal, 10)
                             RoundedRectangle(cornerRadius: 10)
-                                .stroke(styleGreen, lineWidth: 3)
+                                .stroke(styleBlack, lineWidth: 3)
                         }.frame(width: 290, height: 30)
                         ZStack {
                             TextField(
@@ -81,7 +81,7 @@ struct Onboarding: View {
                                 text: $email
                             ).padding(.horizontal, 10)
                             RoundedRectangle(cornerRadius: 10)
-                                .stroke(styleGreen, lineWidth: 3)
+                                .stroke(styleBlack, lineWidth: 3)
                         }.frame(width: 290, height: 30)
                     }.frame(width: 300)
                 }

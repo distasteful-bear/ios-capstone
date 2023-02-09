@@ -85,7 +85,7 @@ var searchTerm: String = "10"
 struct Menu: View {
     @Environment(\.managedObjectContext) private var viewContext
     @State var refresh: Bool = false
-    
+    @State var searchTermy: String = ""
     func update() {
        refresh.toggle()
         print ("Updated screen.")
@@ -159,18 +159,32 @@ struct Menu: View {
             // Hero Title thing
             VStack {
                 VStack {
-                    Text("Little Lemon").font(.largeTitle).foregroundColor(styleYellow).frame(width: 300, alignment: .leading)
-                    Text("Chicago").font(.title2).foregroundColor(styleWhite).frame(width: 300, alignment: .leading)
+                    HStack {
+                        VStack {
+                            Text("Little Lemon").font(.largeTitle).foregroundColor(styleYellow).frame(width: 200, alignment: .leading)
+                            Text("Chicago").font(.title2).foregroundColor(styleWhite).frame(width: 100, alignment: .leading)
+                        }
+                        Image("Stock Image").resizable().aspectRatio(contentMode: .fit).frame(width: 150, height: 75, alignment: .trailing)
+                    }
                     Text("We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.")
                         .font(.body).foregroundColor(styleWhite)
                         .padding(.vertical, 5)
-                }.frame(width: 300)
-                
+                }.frame(width: 300, height: 350)
+                ZStack {
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(styleBlack, lineWidth: 7)
+                        .frame(width: 270, height: 45)
+                        .background(styleGrey)
+                    HStack {
+                        Image(systemName: "magnifyingglass").resizable().aspectRatio(contentMode: .fit)
+                        TextField("Search", text: $searchTermy)
+                    }.frame(width: 250, height: 25)
+                }
                 HStack {
                     Button("A-Z", action: filterAcending).buttonStyle(.bordered).foregroundColor(styleWhite)
                     Button("Z-A", action: filterNotAcending).buttonStyle(.bordered).foregroundColor(styleWhite)
                 }.foregroundColor(styleGrey)
-            }.frame(width: 400, height: 250).background(styleGreen)
+            }.frame(width: 400).background(styleGreen)
             
             List (dishes) {dish in
                 HStack {
