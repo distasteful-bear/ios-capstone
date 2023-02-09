@@ -15,6 +15,7 @@ var controller = PersistenceController()
 var hasLoadedMenu = false
 
 
+// allows for a search term while fetching results.
 func fetchController(searchOn: Bool, filter: String, searchTerm: String)-> [NSSortDescriptor] {
     if searchOn {
         return [NSSortDescriptor(key:"title", ascending: true)]
@@ -25,6 +26,7 @@ func fetchController(searchOn: Bool, filter: String, searchTerm: String)-> [NSSo
 }
 
 
+// allows for sorting results be any of the following cases
 func findSortDescriptors(filterStyle: String)-> [NSSortDescriptor] {
     switch filterStyle {
     case "A-Z":
@@ -41,11 +43,7 @@ func findSortDescriptors(filterStyle: String)-> [NSSortDescriptor] {
 }
 
 
-func findSearchDescriptors(search: String)-> [NSSortDescriptor] {
-    return [NSSortDescriptor()]
-}
-
-
+// allows for either a title search or a price search.
 func predicateController(searchOn: Bool, searchTerm: String)-> NSPredicate {
     if searchOn {
         let result = NSPredicate(format: "title CONTAINS[cd] %@", searchTerm)
@@ -57,25 +55,19 @@ func predicateController(searchOn: Bool, searchTerm: String)-> NSPredicate {
     }
 }
 
-
+// clears database so duplicate instances of the same items won't be created.
 func clearDatabase(dishes: [Dish]) {
         let range = dishes.count - 1
         for count in 0...range {
-            // find this book in our fetch request
             let dish = dishes[count]
-            
-            // delete it from the context
             persistence.container.viewContext.delete(dish)
-            
         }
-        
-        // save the context
         try? persistence.container.viewContext.save()
         print ("Attempted to clear Database.")
 }
 
 
-
+// stores preferences for search
 var searchOn: Bool = false
 var filter: String = "A-Z"
 var searchTerm: String = "10"
@@ -83,14 +75,20 @@ var searchTerm: String = "10"
 
 
 struct Menu: View {
+    
     @Environment(\.managedObjectContext) private var viewContext
+    
+    
     @State var refresh: Bool = false
     @State var searchTermy: String = ""
+    
+    // reloads screen.
     func update() {
        refresh.toggle()
         print ("Updated screen.")
     }
     
+    // pulls data from URL request and stores it into local persistent storage.
     func getMenuData() {
         if (hasLoadedMenu) {
             clearDatabase(dishes: Array(dishes))
@@ -125,22 +123,11 @@ struct Menu: View {
     }
     
     
+    // this fetch request is built for pulling in search options and sort options, I havent had the time to fully
+    // implement this functionality but the frame work is here incase I decide to revisit this project.
     @FetchRequest(sortDescriptors: fetchController(searchOn: searchOn, filter: filter, searchTerm: searchTerm),
                     predicate: predicateController(searchOn: searchOn, searchTerm: searchTerm))
                   var dishes: FetchedResults<Dish>
-    
-    func filterAcending ()->Void {
-        filter = "A=Z"
-        print ("sort type changed to A-Z")
-        getMenuData()
-    }
-    
-    func filterNotAcending () -> Void {
-        filter = "Z-A"
-        print ("sort type changed to Z-A")
-        getMenuData()
-    }
-    
     
     var body: some View {
         
@@ -169,7 +156,9 @@ struct Menu: View {
                     Text("We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist.")
                         .font(.body).foregroundColor(styleWhite)
                         .padding(.vertical, 5)
-                }.frame(width: 300, height: 350)
+                }.frame(width: 300, height: 250)
+                
+                // search bar
                 ZStack {
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(styleBlack, lineWidth: 7)
@@ -180,12 +169,11 @@ struct Menu: View {
                         TextField("Search", text: $searchTermy)
                     }.frame(width: 250, height: 25)
                 }
-                HStack {
-                    Button("A-Z", action: filterAcending).buttonStyle(.bordered).foregroundColor(styleWhite)
-                    Button("Z-A", action: filterNotAcending).buttonStyle(.bordered).foregroundColor(styleWhite)
-                }.foregroundColor(styleGrey)
-            }.frame(width: 400).background(styleGreen)
+            }
+            .frame(width: 400, height: 330).background(styleGreen)
             
+            
+            // displays fetched results from local storage.
             List (dishes) {dish in
                 HStack {
                     VStack {
@@ -202,9 +190,10 @@ struct Menu: View {
                         Color.gray
                     }
                     .frame(width: 50, height: 50, alignment: .trailing)
-                    
-                }.frame(width: 300, alignment: .center)
+                }
+                .frame(width: 300, alignment: .center)
             }
+            // reloads data when it hasnt already. also allows for update() to trigger pulling again with new search terms if changed. 
         } .onAppear {if (!hasLoadedMenu) {getMenuData()}}
     }
 }
