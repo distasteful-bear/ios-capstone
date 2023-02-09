@@ -1,6 +1,6 @@
 # ios-capstone
 This project was originally created for my certificate in iOS dev from Meta. 
-After I concluded the course I decided to host the project publically and continue making progress
+After I concluded the course, I decided to host the project publically and continue making progress
 since I am currently not too happy with it. 
 
 Any reccomendations or advice would be great. 
