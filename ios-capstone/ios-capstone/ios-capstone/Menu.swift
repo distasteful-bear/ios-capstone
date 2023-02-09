@@ -193,7 +193,7 @@ struct Menu: View {
                 }
                 .frame(width: 300, alignment: .center)
             }
-            // reloads data when it hasnt already. also allows for update() to trigger pulling again with new search terms if changed. 
+            // reloads data when it hasnt already. also allows for update() to trigger pulling again with new search terms if changed.
         } .onAppear {if (!hasLoadedMenu) {getMenuData()}}
     }
 }

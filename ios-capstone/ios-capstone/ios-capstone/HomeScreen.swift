@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 let persistence = PersistenceController().self
+
 struct HomeScreen: View {
     
     var body: some View {
@@ -21,7 +22,9 @@ struct HomeScreen: View {
             UserProfile()
                 .tabItem {
                     Label ("Profile", systemImage: "square.and.pencil")
-            }
-        }.navigationBarBackButtonHidden(true)
+                }
+                .toolbarBackground( styleGreen, for: .tabBar)
+        }
+        .navigationBarBackButtonHidden(true)
     }
 }
